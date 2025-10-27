@@ -1,6 +1,11 @@
 name: Build and publish
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - libs/legacy/**
 
 jobs:
   build-and-publish:
@@ -20,9 +25,11 @@ jobs:
           cache: yarn
       - run: yarn --immutable
       - run: yarn test
+        working-directory: libs/legacy
       - name: Publish library
         if: github.ref == 'refs/heads/main'
         run: yarn npm publish
+        working-directory: libs/legacy
 
   increment-version:
     if: github.ref == 'refs/heads/main'
@@ -44,6 +51,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
       - run: yarn version -i patch
-      - run: git add . && git commit -m "[skip ci] bump version" && git push
+        working-directory: libs/legacy
+      - run: git add . && git commit -m "[skip ci] bump version (@navikt/eslint-config-teamsykmelding)" && git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
