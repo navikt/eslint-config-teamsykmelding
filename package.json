@@ -5,5 +5,8 @@
     "workspaces": [
         "libs/**"
     ],
-    "prettier": "./libs/legacy/prettier/index.js"
+    "devDependencies": {
+        "@navikt/tsm-prettier": "workspace:*"
+    },
+    "prettier": "@navikt/tsm-prettier"
 }

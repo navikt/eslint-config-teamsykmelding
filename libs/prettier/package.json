@@ -1,0 +1,20 @@
+{
+    "name": "@navikt/tsm-prettier",
+    "type": "module",
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "exports": {
+        ".": "./index.js"
+    },
+    "files": [
+        "index.js",
+        "package.json",
+        "README.md"
+    ],
+    "peerDependencies": {
+        "prettier": ">= 3"
+    }
+}

@@ -198,6 +198,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@navikt/tsm-prettier@workspace:*, @navikt/tsm-prettier@workspace:libs/prettier":
+  version: 0.0.0-use.local
+  resolution: "@navikt/tsm-prettier@workspace:libs/prettier"
+  peerDependencies:
+    prettier: ">= 3"
+  languageName: unknown
+  linkType: soft
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -2795,6 +2803,8 @@ __metadata:
 "tsm-lint@workspace:.":
   version: 0.0.0-use.local
   resolution: "tsm-lint@workspace:."
+  dependencies:
+    "@navikt/tsm-prettier": "workspace:*"
   languageName: unknown
   linkType: soft
 
