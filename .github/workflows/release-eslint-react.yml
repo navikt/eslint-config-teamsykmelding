@@ -6,6 +6,7 @@ on:
       - main
       - flat
     paths:
+      - .github/workflows/release-eslint-react.yml
       - libs/eslint-react/**
 
 permissions:
@@ -27,12 +28,13 @@ jobs:
           cache: yarn
 
       - run: yarn --immutable
-      - name: Set beta version before build
-        run: |
-          TEMP_VERSION=$(date +'%Y%m%d%H%M%S')
-          jq --arg v "1.0.0-$TEMP_VERSION" '.version = $v' libs/eslint-react/package.json > libs/eslint-react/package.tmp.json && mv libs/eslint-react/package.tmp.json libs/eslint-react/package.json
 
-      - run: yarn npm publish --tag beta
-        working-directory: libs/eslint-react
+      - name: Publish package
+        if: github.ref == 'refs/heads/main' && needs.should_release.outputs.skip == 'false'
+        run: |
+          ./scripts/libs/create-release.sh react-eslint
+          ./scripts/libs/set-version.sh react-eslint
+          cd libs/react-eslint && yarn npm publish
         env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
