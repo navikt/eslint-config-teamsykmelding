@@ -66,8 +66,6 @@ RELEASE_NOTES=$(echo "$RAW_COMMITS" | awk -v proj="^[a-zA-Z]+(${PROJECT}):[[:spa
 echo "Releasing $NEW_TAG"
 echo "$RELEASE_NOTES"
 
-exit 1
-
 git tag "$NEW_TAG"
 git push origin "$NEW_TAG"
 

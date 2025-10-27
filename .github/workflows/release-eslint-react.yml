@@ -2,9 +2,6 @@ name: Release @navikt/eslint-react
 
 on:
   push:
-    branches:
-      - main
-      - flat
     paths:
       - .github/workflows/release-eslint-react.yml
       - libs/eslint-react/**
@@ -30,11 +27,11 @@ jobs:
       - run: yarn --immutable
 
       - name: Publish package
-        if: github.ref == 'refs/heads/main' && needs.should_release.outputs.skip == 'false'
+        if: github.ref == 'refs/heads/main'
         run: |
-          ./scripts/libs/create-release.sh react-eslint
-          ./scripts/libs/set-version.sh react-eslint
-          cd libs/react-eslint && yarn npm publish
+          ./scripts/create-release.sh eslint-react
+          ./scripts/set-version.sh eslint-react
+          cd libs/eslint-react && yarn npm publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
