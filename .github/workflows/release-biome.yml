@@ -1,10 +1,10 @@
-name: Release @navikt/tsm-prettier
+name: Release @navikt/tsm-biome
 
 on:
   push:
     paths:
-      - .github/workflows/release-prettier.yml
-      - libs/prettier/**
+      - .github/workflows/release-biome.yml
+      - libs/biome/**
 
 permissions:
   contents: read
@@ -32,9 +32,9 @@ jobs:
       - name: Publish package
         if: github.ref == 'refs/heads/main'
         run: |
-          ./scripts/create-release.sh prettier
-          ./scripts/set-version.sh prettier
-          cd libs/prettier && yarn npm publish
+          ./scripts/create-release.sh biome
+          ./scripts/set-version.sh biome
+          cd libs/biome && yarn npm publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

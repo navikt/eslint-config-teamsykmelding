@@ -1,0 +1,21 @@
+{
+    "name": "@navikt/tsm-biome",
+    "version": "0.0.1",
+    "type": "module",
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "exports": {
+        ".": "./biome.json"
+    },
+    "files": [
+        "biome.json",
+        "package.json",
+        "README.md"
+    ],
+    "peerDependencies": {
+        "biome": ">= 3"
+    }
+}
