@@ -1,6 +1,6 @@
 # prettier
 
-Just a simple eslint configuration for prettier
+Just a simple eslint configuration for prettier.
 
 ## Installation
 
