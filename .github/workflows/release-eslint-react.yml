@@ -1,0 +1,38 @@
+name: Release @navikt/eslint-react
+
+on:
+  push:
+    branches:
+      - main
+      - flat
+    paths:
+      - libs/eslint-react/**
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: 'read'
+      packages: 'write'
+    steps:
+      - uses: actions/checkout@v5
+      - run: corepack enable
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
+          registry-url: https://npm.pkg.github.com
+          cache: yarn
+
+      - run: yarn --immutable
+      - name: Set beta version before build
+        run: |
+          TEMP_VERSION=$(date +'%Y%m%d%H%M%S')
+          jq --arg v "1.0.0-$TEMP_VERSION" '.version = $v' libs/eslint-react/package.json > libs/eslint-react/package.tmp.json && mv libs/eslint-react/package.tmp.json libs/eslint-react/package.json
+
+      - run: yarn npm publish --tag beta
+        working-directory: libs/eslint-react
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

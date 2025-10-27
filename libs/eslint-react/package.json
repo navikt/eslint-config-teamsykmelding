@@ -1,0 +1,24 @@
+{
+    "name": "@navikt/tsm-eslint-react",
+    "type": "module",
+    "version": "1.0.0",
+    "license": "MIT",
+    "publishConfig": {
+        "access": "public",
+        "registry": "https://npm.pkg.github.com/"
+    },
+    "exports": {
+        ".": "./index.ts"
+    },
+    "files": [
+        "index.ts",
+        "package.json",
+        "README.md"
+    ],
+    "peerDependencies": {
+        "eslint": ">= 9"
+    },
+    "devDependencies": {
+        "eslint": "^9.38.0"
+    }
+}
