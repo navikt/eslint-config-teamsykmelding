@@ -16,6 +16,6 @@
         "README.md"
     ],
     "peerDependencies": {
-        "biome": ">= 3"
+        "@biomejs/biome": ">= 2"
     }
 }

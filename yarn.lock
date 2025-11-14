@@ -192,7 +192,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@navikt/tsm-biome@workspace:libs/biome"
   peerDependencies:
-    biome: ">= 3"
+    "@biomejs/biome": ">= 2"
   languageName: unknown
   linkType: soft
 
